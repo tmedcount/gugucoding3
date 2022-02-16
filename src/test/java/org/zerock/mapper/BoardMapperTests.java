@@ -54,7 +54,7 @@ public class BoardMapperTests {
 	@Test
 	public void testRead() {
 		
-		BoardVO board = boardMapper.read(6L);
+		BoardVO board = boardMapper.read(7L);
 		log.info(board);
 	}
 	
@@ -65,5 +65,16 @@ public class BoardMapperTests {
 		log.info("count: " + count);
 	}
 	
+	@Test
+	public void testUpdate() {
+		
+		BoardVO board = new BoardVO();
+		board.setBno(7L);
+		board.setTitle("Updated Title");
+		board.setContent("Updated Content");
+		board.setWriter("user00");
+		
+		log.info("count: " + boardMapper.update(board));
+	}
 	
 }
