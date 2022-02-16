@@ -15,13 +15,13 @@ import lombok.extern.log4j.Log4j;
 public class BoardMapperTests {
 	
 	@Autowired
-	private BoardMapper boardMapper;
+	private BoardMapper mapper;
 	
 	@Test
 	public void testGetList() {
 		
 		log.info("---------------------");
-		boardMapper.getList();
+		mapper.getList();
 		
 	}
 	
@@ -33,7 +33,7 @@ public class BoardMapperTests {
 		board.setContent("Content 테스트");
 		board.setWriter("tester");
 		
-		boardMapper.insert(board);
+		mapper.insert(board);
 		log.info("---------------------------------");
 		log.info("after insert " + board.getBno());
 	}
@@ -46,7 +46,7 @@ public class BoardMapperTests {
 		board.setContent("AAAContent 테스트");
 		board.setWriter("tester");
 		
-		boardMapper.insertSelectKey(board);
+		mapper.insertSelectKey(board);
 		log.info("---------------------------------");
 		log.info("after insert selectKey " + board.getBno());
 	}
@@ -54,14 +54,14 @@ public class BoardMapperTests {
 	@Test
 	public void testRead() {
 		
-		BoardVO board = boardMapper.read(7L);
+		BoardVO board = mapper.read(7L);
 		log.info(board);
 	}
 	
 	@Test
 	public void testDelete() {
 		
-		int count = boardMapper.delete(10L);
+		int count = mapper.delete(10L);
 		log.info("count: " + count);
 	}
 	
@@ -74,7 +74,7 @@ public class BoardMapperTests {
 		board.setContent("Updated Content");
 		board.setWriter("user00");
 		
-		log.info("count: " + boardMapper.update(board));
+		log.info("count: " + mapper.update(board));
 	}
 	
 }
