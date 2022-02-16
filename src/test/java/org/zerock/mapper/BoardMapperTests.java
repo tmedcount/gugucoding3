@@ -51,5 +51,12 @@ public class BoardMapperTests {
 		log.info("after insert selectKey " + board.getBno());
 	}
 	
+	@Test
+	public void testRead() {
+		
+		BoardVO board = boardMapper.read(6L);
+		log.info(board);
+	}
+	
 	
 }
