@@ -24,6 +24,31 @@ public class BoardServiceTests {
 	}
 	
 	@Test
+	public void testUpdate() {
+		
+		BoardVO board = service.get(10L);
+		
+		if(board == null) {
+			return;
+		}
+		
+		board.setTitle("제목 수정합니다.");
+		log.info("MODIFY RESULT: " + service.motify(board));
+	}
+	
+	@Test
+	public void testDelete() {
+		
+		log.info("REMOVE RESULT: " + service.remove(11L));
+	}
+	
+	@Test
+	public void testGet() {
+		
+		log.info(service.get(1L));
+	}
+	
+	@Test
 	public void testGetList() {
 		
 		service.getList().forEach(board -> log.info(board));
