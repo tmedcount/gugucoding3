@@ -35,7 +35,7 @@
                                 	<c:forEach items="${list}" var="board">
 	                                    <tr class="odd gradeX">
 	                                        <td>${board.bno }</td>
-	                                        <td>${board.title }</td>
+	                                        <td><a href='/board/get?bno=<c:out value="${board.bno}"/>'><c:out value="${board.title}"/></td>
 	                                        <td>${board.writer }</td>
 	                                        <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate }"/></td>
 	                                        <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updatedate }"/></td>
@@ -79,8 +79,10 @@
 		
 		checkModal(result);
 		
+		history.replaceState({}, null, null);
+		
 		function checkModal(result) {
-			if(result === '') {
+			if(result === '' || history.state) {
 				return;
 			}
 			
