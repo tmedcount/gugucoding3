@@ -21,6 +21,8 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                         <form>
+                        	<input type="hidden" name="pageNum" value="${cri.pageNum}">
+                        	<input type="hidden" name="amount" value="${cri.amount}">
                     		<div class="form-group">
                                  <label>BNO</label>
                                  <input class="form-control" name="bno" readonly="readonly" value='<c:out value="${board.bno}" />'>
