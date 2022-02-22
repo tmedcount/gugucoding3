@@ -36,8 +36,33 @@
                                  <label>Writer</label>
                                  <input class="form-control" name="writer" value='<c:out value="${board.writer}" />'>
                              </div>
-                             <button type="submit" class="btn btn-info" onclick="location.href='/board/list'">List</button>
-                             <button type="reset" class="btn btn-default" onclick="location.href='/board/modify?bno=<c:out value="${board.bno}" />'">Modify</button>
+                             
+                             <form id="actionForm" action="/board/list" method="get">
+                            	<input type="hidden" name="pageNum" value="${cri.pageNum}">
+                            	<input type="hidden" name="amount" value="${cri.amount}">
+                            	<input type="hidden" name="bno" value="${board.bno}">
+                            </form>
+                            
+                             <button type="button" class="btn btn-info listBtn" onclick="location.href='/board/list'">List</button>
+                             <button type="button" class="btn btn-default modBtn" onclick="location.href='/board/modify?bno=<c:out value="${board.bno}" />'">Modify</button>
+                             
+                             <script>
+                             	
+                             	var actionForm = $("#actionForm");
+                             
+                             	$(".listBtn").on("click", function(e) {
+                             		e.preventDefault();
+                             		actionForm.find("input[name='bno']").remove();
+                             		actionForm.submit();
+                             	});
+                             	
+                             	$(".modBtn").on("click", function(e) {
+                             		e.preventDefault();
+                             		actionForm.attr("action", "/board/modify");
+                             		actionForm.submit();
+                             	});
+                             
+                             </script>
                         </div>
                         <!-- /.panel-body -->
                     </div>
