@@ -67,7 +67,13 @@ $(document).ready(function() {
 		console.log(operation);
 		
 		if(operation === 'list') {
-			self.location = "/board/list";
+			formObj.attr("action", "/board/list")
+			formObj.find("input[name='bno']").remove();
+			formObj.find("input[name='title']").remove();
+			formObj.find("textarea[name='content']").remove();
+			formObj.find("input[name='writer']").remove();
+			
+			formObj.submit();
 		} else if(operation === 'remove') {
 			formObj.attr("action", "/board/remove")
 			.attr("method", "post");
