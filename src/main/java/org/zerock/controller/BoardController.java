@@ -40,7 +40,7 @@ public class BoardController {
 		log.info("list.....................");
 		
 		model.addAttribute("list", service.getList(cri));
-		model.addAttribute("pageMaker", new PageDTO(cri, 294));
+		model.addAttribute("pageMaker", new PageDTO(cri, service.getTotal(cri)));
 	}
 	
 	@GetMapping({"/get", "/modify"})
